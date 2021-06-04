@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu</title>
+<link rel="stylesheet" href="topNav.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <div class="topnav">
+    <a href="listCandi.jsp" target="main" class="active">후보등록</a> 
+    <a href="vote.jsp" target="main">투표</a> 
+    <a href="stats.jsp" target="main">개표</a>
+  </div>
+
+<script>
+$(function() {
+	let menu = $(".topnav").find("a");
+	menu.click(function() {
+		menu.removeClass("active");   
+		$(this).addClass("active");
+	})
+});
+</script>
+</body>
+</html>

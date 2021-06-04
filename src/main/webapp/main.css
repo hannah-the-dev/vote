@@ -1,0 +1,72 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+body {
+  margin: 10px 0 0 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  max-width: 1000px;
+}
+
+
+input.idx {
+  border: 0;
+  width: 100px;
+  background-color: transparent;
+}
+
+input.name {
+  border-width: 0 0 2px;
+  border-color: #04AA6D;
+  background-color: transparent;
+}
+
+input.name:focus {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #04AA6D;
+}
+
+input[type="submit"] {
+  text-align: center;
+  width: 80px;
+  border-radius: 5px;
+  border: solid 2px #04AA6D;
+  background-color: transparent;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+input[type="submit"]:hover {
+  background-color: #04AA6D;
+  color:white;
+
+}
+
+form[name="0"] {
+  background-color: #cccccc;
+}
+
+
+.result {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.voting{
+  display: flex; 
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+#regRes, #canRes, #back {
+  display: flex; 
+  justify-content: center;
+  position: relative;
+} 
+
+
+.voteOpt {
+  display: block;
+}
+
