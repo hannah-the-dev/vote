@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.sql.*"
+<%@ page import="votes.domain.*"%>
+<%@ page import="votes.service.*"%>
+<%@ page import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
   pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,17 +13,9 @@
 <script type="text/javascript" src="main.js"></script>
 <body>
   <%
-  Class.forName("com.mysql.cj.jdbc.Driver");
-  Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.23.17:3306/kopoctc", "root", "kopoctc");
-  Statement stmt = conn.createStatement();
-
+  VoteServiceImpl voteSvc = new VoteServiceImpl();
   request.setCharacterEncoding("UTF-8");
-  String idx = request.getParameter("idx");
-  String age = request.getParameter("age");
-
-  String insert = String.format("insert into vote_data values(null, %s, %s, null);", idx, age);
-  stmt.execute(insert);
-  int updateCount = stmt.getUpdateCount();
+  int updateCount = voteSvc.voting(request);
   %>
 
   <div class="result">
@@ -33,11 +27,9 @@
       <%
       } else {
       %>
-      <%=idx%>번 후보에 투표하셨습니다.
+      투표에 성공했습니다.
       <%
       }
-      stmt.close();
-      conn.close();
       %>
     </div>
 
