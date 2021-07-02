@@ -1,24 +1,29 @@
-# boardSystem
+# vote system
 ## : Hierachy
 <pre>
 ├─.settings
 ├─build
 │  └─classes
-│      └─com
-│          └─hannahj
-│              └─bbs
-│                  ├─dao
-│                  ├─domain
-│                  └─service
+│      └─votes
+│          ├─dao
+│          ├─domain
+│          ├─dto
+│          └─service
+├─kr
+│  └─ac
+│      └─kopo
+│          └─kopo01
+│              ├─dao
+│              ├─domain
+│              └─service
 └─src
     └─main
         ├─java
-        │  └─com
-        │      └─hannahj
-        │          └─bbs
-        │              ├─dao
-        │              ├─domain
-        │              └─service
+        │  └─votes
+        │      ├─dao
+        │      ├─domain
+        │      ├─dto
+        │      └─service
         └─webapp
             ├─META-INF
             └─WEB-INF
