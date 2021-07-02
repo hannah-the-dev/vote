@@ -1,3 +1,6 @@
+<%@ page import ="votes.service.*" %>
+<%@ page import ="votes.domain.*" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" import="java.sql.*"
   pageEncoding="UTF-8"%>
 
@@ -11,33 +14,25 @@
 </head>
 <body>
   <%
-  Class.forName("com.mysql.cj.jdbc.Driver");
-  Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.23.17:3306/kopoctc", "root", "kopoctc");
-  Statement stmt = conn.createStatement();
-  String select = "select * from candidates;";
-
   request.setCharacterEncoding("UTF-8");
-  String idx = request.getParameter("idx");
-
-  String delete = String.format("update candidates set valid=0 where candi_idx='%s';", idx);
-  stmt.execute(delete);
-  int updateCount = stmt.getUpdateCount();
+  int candiIdx =  Integer.parseInt(request.getParameter("idx"));
+  String candiName = request.getParameter("name");
+  CandidateServiceImpl resignSvc = new CandidateServiceImpl();
+  int succeed = resignSvc.resign(new Candidate(candiIdx, candiName));
   %>
 
   <div class="result">
     <div id="regRes">
       <%
-      if (updateCount == -1) {
+      if (succeed < 1) {
       %>
-      <%=idx%>번 후보 등록 취소에 실패했습니다.
+      <%=candiIdx%>번 후보 등록 취소에 실패했습니다.
       <%
       } else {
       %>
-      <%=idx%>번 후보 등록을 취소했습니다(<%=updateCount%>건).
+      <%=candiIdx%>번 후보 등록을 취소했습니다.
       <%
       }
-      stmt.close();
-      conn.close();
       %>
     </div>
 
